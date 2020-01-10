@@ -1,0 +1,7 @@
+{
+  "name": "emoji",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

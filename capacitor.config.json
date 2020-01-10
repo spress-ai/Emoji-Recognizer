@@ -1,0 +1,8 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "emoji",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}
