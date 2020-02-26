@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { HomePage } from './home.page';
+import { WebcamModule } from 'ngx-webcam';
 
 describe('HomePage', () => {
   let component: HomePage;
@@ -10,7 +11,7 @@ describe('HomePage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomePage ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot(), WebcamModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomePage);
@@ -20,5 +21,9 @@ describe('HomePage', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have a class member called showCamera', () => {
+    expect(component.showCamera).toBe(true);
   });
 });

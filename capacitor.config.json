@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "emoji",
+  "appId": "ai.spress.emoji",
+  "appName": "Emoji",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

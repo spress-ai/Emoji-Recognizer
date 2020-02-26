@@ -1,1 +1,189 @@
+.logo {
+    margin: 0 25px 0 30px;
 
+    img {
+        height: 35px;
+    }
+}
+
+.github {
+    img {
+        height: 35px;
+    }
+}
+
+.mobileButtonBar {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    font-size: 3rem;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.cameraContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .cameraFitContainer {
+        position: relative;
+        
+        webcam {
+            position: relative;
+        }
+    
+        .boundingBox {
+            position: absolute;
+            z-index: 1;
+            border: red 2px solid;
+        }
+
+        .cameraErrorMessage {
+            color: white;
+            width: 70%;
+            margin-left: 15%;
+            text-align: center;
+            margin-top: 50px;
+        }
+    }
+}
+
+.snapshot {
+    display: none;
+}
+
+.emojiBar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: calc(56px + 25px);
+    right: 0;
+    padding: 10px;
+    font-size: 3rem;
+    height: calc(100vh - 56px - 50px);
+    z-index: 10;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background-color: #3e3e3e;
+    width: 120px;
+
+    .buttonContainer {
+        position: absolute;
+        top: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+
+    .emoji {
+        position: relative;
+        transition: all .1s linear;
+    }
+
+    .cameraIconContainer {
+        position: relative;
+
+        img {
+            position: absolute;
+            z-index: 1;
+        }
+    }
+    
+    .selectedEmoji {
+        font-size: 5rem;
+    }    
+}
+
+.emojiBar.mobileBar {
+    width: 90%;
+    left: 5%;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 0;
+    top: auto;
+    bottom: 0;
+    height: 75px;
+    flex-direction: row;
+    font-size: 2rem;
+    justify-content: space-around;
+
+    .selectedEmoji {
+        font-size: 3.5rem;
+    }
+}
+
+.isMobile {
+    .controlContainer {
+        font-size: 1.2rem;
+    }
+
+    .dataPrivacy {
+        position: static;
+        transform: none;
+        width: 100%;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+}
+
+.dataPrivacy {
+    background-color: #3e3e3e;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    padding: 10px 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+@media only screen and (max-height: 780px) {
+    .buttonContainer {
+        position: relative !important;
+    }
+}
+
+@media only screen and (max-height: 700px) {
+    .emojiBar {
+        font-size: 2.5rem;
+    }
+}
+
+@media only screen and (max-height: 625px) {
+    .emojiBar {
+        font-size: 2rem;
+
+        .selectedEmoji {
+            font-size: 4rem;
+        }
+    }
+
+}
+
+@media only screen and (max-height: 500px) {
+    .emojiBar {
+        font-size: 1.5rem;
+
+        .selectedEmoji {
+            font-size: 3rem;
+        }
+    }
+
+}
+
+@media only screen and (max-height: 425px) {
+    .emojiBar {
+        font-size: 1.2rem;
+
+        .selectedEmoji {
+            font-size: 2.5rem;
+        }
+    }
+
+}

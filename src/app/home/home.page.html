@@ -1,14 +1,79 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Emoji Recognizer
     </ion-title>
+
+    <ion-buttons slot="end">
+      <a class="github" href="https://www.spress.ai">
+        <img src="../../assets/images/github.png" />
+      </a>
+
+      <a class="logo" href="https://www.spress.ai">
+        <img src="../../assets/images/logo.png" />
+      </a>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+<ion-content [ngClass]="{ 'isMobile': isMobile }">
+  <div *ngIf="isMobile && !showCameraErrorMessage" class="mobileButtonBar">
+    <ion-icon *ngIf="isRunning && !isStarting" name="square" (click)="toggle();" tappable></ion-icon>
+    <ion-icon *ngIf="!isRunning" name="play" (click)="toggle();" tappable></ion-icon>
+    <ion-spinner *ngIf="isRunning && isStarting" name="lines"></ion-spinner>
+    <ion-icon name="videocam" (click)="toggleCamera()" tappable></ion-icon>
   </div>
+
+  <div class="cameraContainer">
+    <div class="cameraFitContainer">
+      <webcam *ngIf="showCamera && !showCameraErrorMessage" id="webcam" [height]="videoHeight" [width]="videoWidth" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" (initError)="cameraInitError($event)"></webcam>
+      <div *ngIf="showCameraErrorMessage" class="cameraErrorMessage">
+        <span *ngIf="platform.is('ios') && (getBrowserName() == 'chrome' || getBrowserName() == 'firefox')">
+          Browser not supported. On iOS, please use Safari.
+        </span>
+
+        <span *ngIf="platform.is('android') && !permissionError">
+          Browser not supported. On Android, please use Google Chrome.
+        </span>
+
+        <span *ngIf="platform.is('android') && permissionError">
+          Make sure you have accepted the permissions to use the camera.
+        </span>
+
+        <span *ngIf="(!platform.is('ios') || !platform.is('android'))">
+          Please make sure that your device has a camera and that the latter is activated.
+        
+          <span *ngIf="permissionError">
+            <br />
+            <br />
+            In addition, make sure that you have accepted the permissions for using the camera.
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="emojiBar" [ngClass]="{ 'mobileBar': isMobile }">
+    <div *ngIf="!isMobile && !showCameraErrorMessage" class="buttonContainer">
+      <ion-icon *ngIf="isRunning && !isStarting" name="square" (click)="toggle();" tappable></ion-icon>
+      <ion-icon *ngIf="!isRunning" name="play" (click)="toggle();" tappable></ion-icon>
+      <ion-spinner *ngIf="isRunning && isStarting" name="lines"></ion-spinner>
+
+      <div class="cameraIconContainer" (click)="toggleCamera()" tappable>
+        <img *ngIf="showCamera" src="../../assets/images/no_circle.png" />
+        <ion-icon name="videocam"></ion-icon>
+      </div>
+    </div>
+
+    <div *ngFor="let emoji of emojis" [ngClass]="{ 'selectedEmoji': emoji.selected }" class="emoji">{{ emoji.icon }}</div>
+  </div>
+
+  <div class="snapshot" *ngIf="webcamImage">
+    <img id="imageScreenshot" width="256" height="256" [src]="webcamImage.imageAsDataUrl"/>
+  </div>
+
+  <div *ngIf="!showCameraErrorMessage" class="dataPrivacy">
+    No data is sent to any server, everything is analysed in your browser
+  </div>
+
 </ion-content>
