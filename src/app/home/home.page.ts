@@ -152,6 +152,7 @@ export class HomePage {
     if(this.isRunning){
       this.isRunning = false;
     } else {
+      this.showCamera = true;
       this.loading = await this.loadingCtrl.create({
         "message": "Initializing..."
       });
