@@ -127,6 +127,7 @@
         width: 100%;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
+        margin-bottom: 80px;
     }
 }
 
@@ -163,7 +164,6 @@
             font-size: 4rem;
         }
     }
-
 }
 
 @media only screen and (max-height: 500px) {
@@ -174,7 +174,6 @@
             font-size: 3rem;
         }
     }
-
 }
 
 @media only screen and (max-height: 425px) {
@@ -185,5 +184,19 @@
             font-size: 2.5rem;
         }
     }
+}
 
+
+@media only screen and (max-width: 500px) {
+    .logo, .github {
+        img {
+            height: 25px;
+        }
+    }    
+}
+
+@media only screen and (max-width: 400px) {
+    .logo {
+        margin: 0 10px 0 15px;
+    }  
 }
