@@ -2,7 +2,7 @@
 
 Funny web app that recognize which emoji someone is making with TensorFlow JS
 
-**[Try it !](https://emoji.spress.ai)**
+**[Try it out !](https://emoji.spress.ai)**
 
 ## Run the code:
 

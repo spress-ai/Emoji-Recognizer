@@ -86,13 +86,11 @@ export class HomePage {
   }
 
   async ngOnInit(){
-    //console.log("TFJS Version", tf.version);
     this.model = await this.loadModel();
   }
 
   async loadModel(){
     const mobilenet = await tf.loadLayersModel('../../assets/tfjs_model/model.json');
-    //console.log(mobilenet)
     return mobilenet;
   }
 
@@ -104,7 +102,6 @@ export class HomePage {
       const argMax = this.argMax(arr)
   
       let emojis = ["oops", "scream", "silence", "smile", "surprised", "thinking", "tongue"];
-      //console.log(argMax, emojis[argMax])
       if(this.isStarting) {
         this.loading.dismiss();
         this.isStarting = false;
@@ -203,5 +200,5 @@ export class HomePage {
       default:
         return 'other';
     }
-}
+  }
 }
